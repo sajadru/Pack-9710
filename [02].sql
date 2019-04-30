@@ -23,26 +23,24 @@ INNER JOIN Production.Location PL
 ON PL.LocationID=PI.LocationID) s
 GROUP BY Category, Depot
 ----03
-SELECT PP.Name,PI.Quantity
+SELECT PP.Name,PI.Quantity 
 FROM Production.ProductInventory PI
 INNER JOIN Production.Product PP
 ON PI.Quantity<=PP.SafetyStockLevel
-
 
 SELECT PP.Name,PI.Quantity
 FROM Production.ProductInventory PI
 INNER JOIN Production.Product PP
 ON PI.Quantity-100=PP.SafetyStockLevel
 ----04
-SELECT PP.Name,PI.Quantity, PP.SafetyStockLevel
+SELECT PP.Name,PI.Quantity, PP.SafetyStockLevel,CASE
+WHEN PI.QUANTITY
+END
 FROM Production.ProductInventory PI
 INNER JOIN Production.Product PP
 ON PI.Quantity<=PP.SafetyStockLevel
 
-SELECT PP.Name,PI.Quantity, PP.SafetyStockLevel
-FROM Production.ProductInventory PI
-INNER JOIN Production.Product PP
-ON PI.Quantity-100=PP.SafetyStockLevel
+
 ----05-06
 SELECT ProductID, DaysToManufacture
 FROM Production.Product
